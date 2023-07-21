@@ -1,3 +1,4 @@
+import { useContractRead } from "@starknet-react/core";
 import type { BoxProps } from "@chakra-ui/react";
 import { Box, HStack, Skeleton, Text, VStack } from "@chakra-ui/react";
 import type { FC } from "react";
@@ -33,7 +34,12 @@ function Info({
 
 const Nft: FC<BoxProps> = ({ ...props }) => {
   // TODO use the useContractRead hook from starknet-react to get the tokenURI metadata
-  // const { data: tokenUriData } = ...
+  const { data: tokenUriData } = useContractRead({
+    address: environment.nftAddress,
+    abi: compiledAvnuNft,
+    functionName: "balanceOf",
+    args: [{ low: 1, high: 0 }],
+  });
 
   // Internal state of the metadata fecthed from the tokenURI
   const [metadata, setMetadata] = useState<NftMetadata | undefined>(undefined);
