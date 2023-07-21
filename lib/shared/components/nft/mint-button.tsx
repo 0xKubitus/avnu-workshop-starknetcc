@@ -7,7 +7,7 @@ import {
   useTransactionManager,
   useWaitForTransaction,
 } from "@starknet-react/core";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import type { Abi, AccountInterface } from "starknet";
 import { json } from "starknet";
 
@@ -28,10 +28,15 @@ const Balance = ({
   // Internal state representing the current balance of the account
   const [balance, setBalance] = useState<bigint>(BigInt(0));
   // TODO use useWaitForTransaction hook to wait for the mint transaction to be accepted on L2 -> Use to refresh the balance after mint
-  // const { data } = ...
+  const { data } = useWaitForTransaction({ hash: mintHash, watch: true });
 
   // TODO use useContractRead hook to fetch the balance of the account
-  // const { data: tokenBalanceData, refetch } = ...
+  const { data: tokenBalanceData, refetch } = useContractRead({
+    address: environment.nftAddress,
+    abi: compiledAvnuNft,
+    functionName: "balanceOf",
+    args: [account.address],
+  });
 
   // Set the internal state balance when the tokenBalanceData is fetched
   useEffect(() => {
@@ -55,7 +60,15 @@ export default function MintButton({ ...props }: ButtonProps) {
   const { addTransaction } = useTransactionManager();
 
   // TODO use useContractWrite hook to call the mint function of the AVNUNft contract
-  // const { data: txDataMint, write: writeMint } = ...
+  const { data: txDataMint, write: writeMint } = useContractWrite({
+    calls: [
+      {
+        contractAddress: environment.nftAddress,
+        entrypoint: "mintPublic",
+        calldata: [account?.address || "0x0"],
+      },
+    ],
+  });
 
   // TODO use useContractWrite hook to call the mint function of the AVNUNft contract && transfer some eth to the contract (multicall)
   // const { data: txDataMintAndTransfer, write: writeMintAndTransfer } = ...

@@ -37,7 +37,7 @@ const Nft: FC<BoxProps> = ({ ...props }) => {
   const { data: tokenUriData } = useContractRead({
     address: environment.nftAddress,
     abi: compiledAvnuNft,
-    functionName: "balanceOf",
+    functionName: "tokenURI",
     args: [{ low: 1, high: 0 }],
   });
 
