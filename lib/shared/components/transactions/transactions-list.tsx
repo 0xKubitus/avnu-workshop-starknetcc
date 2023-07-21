@@ -1,4 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react";
+import { useTransactionManager } from "@starknet-react/core";
 import type { ManagedTransaction } from "@starknet-react/core/src/providers";
 
 function Transaction({ tx }: { tx: ManagedTransaction<object> }) {
@@ -6,7 +7,7 @@ function Transaction({ tx }: { tx: ManagedTransaction<object> }) {
 }
 export default function TransactionsList() {
   // TODO use useTransactionManager hook to get all transactions registered
-  // const { transactions } = ...
+  const { transactions } = useTransactionManager();
   // Display all transactions hashes
   return (
     <Flex direction="column">
