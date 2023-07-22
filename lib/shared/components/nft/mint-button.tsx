@@ -7,7 +7,7 @@ import {
   useTransactionManager,
   useWaitForTransaction,
 } from "@starknet-react/core";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import type { Abi, AccountInterface } from "starknet";
 import { json } from "starknet";
 
@@ -71,7 +71,25 @@ export default function MintButton({ ...props }: ButtonProps) {
   });
 
   // TODO use useContractWrite hook to call the mint function of the AVNUNft contract && transfer some eth to the contract (multicall)
-  // const { data: txDataMintAndTransfer, write: writeMintAndTransfer } = ...
+  const { data: txDataMintAndTransfer, write: writeMintAndTransfer } =
+    useContractWrite({
+      calls: [
+        {
+          contractAddress: environment.nftAddress,
+          entrypoint: "mintPublic",
+          calldata: [account?.address || "0x0"],
+        },
+        {
+          contractAddress: environment.ethAddress,
+          entrypoint: "transfer",
+          calldata: [
+            "0x0312479874C73a1801164B7aA59a3f4af96478dF170BE27F25E683EDF39E91Cb",
+            1,
+            0,
+          ],
+        },
+      ],
+    });
 
   // Add transaction to the manager once transaction is submitted
   useEffect(() => {

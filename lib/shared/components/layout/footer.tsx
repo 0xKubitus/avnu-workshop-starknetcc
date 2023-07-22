@@ -1,12 +1,13 @@
 "use client";
 
 import { Flex, Text } from "@chakra-ui/react";
+import { useBlock } from "@starknet-react/core";
 
 export default function Footer() {
-  // TODO Use the useBlock hook from starknet-react to get the current block number
+  const { data } = useBlock();
   return (
     <Flex h="full" justify="flex-end" align="center">
-      <Text>Block number {/* Add block number here */}</Text>
+      <Text>Block number {data?.block_number}</Text>
     </Flex>
   );
 }

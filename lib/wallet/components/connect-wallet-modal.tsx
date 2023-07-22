@@ -1,6 +1,8 @@
 import { Link, VStack } from "@chakra-ui/react";
 import type { Connector } from "@starknet-react/core";
+import { useConnectors } from "@starknet-react/core";
 import type { FC } from "react";
+import { useEffect } from "react";
 
 import BoxItem from "../../shared/components/modal/box-item";
 import Modal from "../../shared/components/modal/modal";
@@ -11,16 +13,22 @@ interface Props {
 }
 
 const ConnectWalletModal: FC<Props> = ({ isOpen, onClose }) => {
-  // TODO use starknet-react to get available connectors
+  const { available, connect, refresh } = useConnectors();
+  useEffect(() => {
+    let interval: NodeJS.Timer;
+    if (available.length === 0) {
+      interval = setInterval(refresh, 0);
+    }
+    return () => clearInterval(interval);
+  }, [available, refresh]);
   const handleClickConnect = (connector: Connector) => () => {
-    // connect(connector);
+    connect(connector);
     onClose();
   };
 
   return (
     <Modal title="Connect wallet" isOpen={isOpen} onClose={onClose}>
-      {/* TODO uncomment this part when you have import the available connectors */}
-      {/* {available.length > 0 ? (
+      {available.length > 0 ? (
         <VStack w="full">
           {available.map((connector) => (
             <BoxItem
@@ -39,7 +47,7 @@ const ConnectWalletModal: FC<Props> = ({ isOpen, onClose }) => {
         >
           <BoxItem>No wallet detected, you can download one here</BoxItem>
         </Link>
-      )} */}
+      )}
     </Modal>
   );
 };
