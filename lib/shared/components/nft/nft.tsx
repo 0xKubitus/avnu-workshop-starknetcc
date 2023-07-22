@@ -1,6 +1,6 @@
-import { useContractRead } from "@starknet-react/core";
 import type { BoxProps } from "@chakra-ui/react";
 import { Box, HStack, Skeleton, Text, VStack } from "@chakra-ui/react";
+import { useContractRead } from "@starknet-react/core";
 import type { FC } from "react";
 import { useEffect, useState } from "react";
 import type { Abi } from "starknet";
