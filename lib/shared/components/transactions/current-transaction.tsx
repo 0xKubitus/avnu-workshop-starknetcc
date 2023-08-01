@@ -1,11 +1,9 @@
-import { useMemo } from "react";
-
 import { Flex, Text } from "@chakra-ui/react";
-
 import {
   useTransactionManager,
   useWaitForTransaction,
 } from "@starknet-react/core";
+import { useMemo } from "react";
 
 export default function CurrentTransaction() {
   // TODO get the last transaction hash using useTransactionManager hook
