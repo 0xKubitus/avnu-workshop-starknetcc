@@ -341,10 +341,10 @@
     aria-hidden "^1.2.2"
     react-remove-scroll "^2.5.5"
 
-"@chakra-ui/next-js@^2.1.4":
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/next-js/-/next-js-2.1.4.tgz#8a186840417c162a87ea4ea5b1432ee27840bb06"
-  integrity sha512-qPmpZSA6ONozcD8gC8fyuEPqweZqk1Y4ar/hbfUDLMdCCRsU+aigN6ay2HBBn3kPzzMOE6BUlkgvij8uB8smxQ==
+"@chakra-ui/next-js@^2.1.5":
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/next-js/-/next-js-2.1.5.tgz#07db35f1af9512fdbc8443f7c51f21197e94df6d"
+  integrity sha512-bBd8zeXlAuVwDsjGN0/5ZZJknSbFeiZgJiGdbJo91v2lxKkOwo26b4ggc1ck1t+JR+daU6SrGBjlbQqSuWzyaA==
   dependencies:
     "@emotion/cache" "^11.11.0"
 
