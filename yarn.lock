@@ -3511,10 +3511,10 @@ starknet@^5.14.1:
     pako "^2.0.4"
     url-join "^4.0.1"
 
-starknetid.js@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/starknetid.js/-/starknetid.js-1.5.0.tgz#8489d6427fa99edad55423096f5291b498cfc08e"
-  integrity sha512-ySoRmWs01xQysBsniKGqiVvPnprIyBOXDB1SVxx1dKtwHK6fuKbhtbXCPKVaFuo/Cln5Ass51p5N8uzEWYvzNQ==
+starknetid.js@^1.5.4:
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/starknetid.js/-/starknetid.js-1.5.4.tgz#f1110eae094476d2493e8a40d2dce782b146d766"
+  integrity sha512-k8gtO0EBOIIepMw1s3MsR49E37x6iSl6wdbb1/Mdlz4EwztC03TlTMhnc4ilRZgG44lbA6Cu0S3z2Y/mh90Oxg==
 
 streamsearch@^1.1.0:
   version "1.1.0"
